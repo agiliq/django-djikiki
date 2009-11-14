@@ -1,0 +1,34 @@
+{% extends 'djikiki/base.html' %}
+
+{% block title%}
+{{wiki.name}} - Main 
+{% endblock %}
+
+{% block header %}
+		<h2><span></span></h2>
+		<h1>
+		<div id="title">Main
+    </div>
+		</h1>	
+{% endblock %}
+
+{% block main %}
+{{latest_featured.current_revision.html_text|safe}}
+<div id="featureds">
+<ul>
+Recently featured:
+{% for featured in recently_featured %}
+<li>
+<a href="{{featured.page.get_absolute_url}}">{{featured.page.title}}</a>
+</li>
+{% endfor %}
+</ul>
+</div>
+{% endblock %}
+
+{% block contextnav %}
+<ul>
+<li><a href="{% url djikiki_random %}">Random Page</a></li>
+<li><a href="{% url djikiki_featured %}">Featured Pages</a></li>
+</ul>
+{% endblock %}

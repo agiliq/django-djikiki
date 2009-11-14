@@ -1,0 +1,38 @@
+{% extends 'djikiki/base.html' %}
+
+{% block title  %}
+{{wiki.name}} - {{category}}
+{% endblock %}
+
+{% block header %}
+		<h2><span></span></h2>
+		<h1>
+    <div id="title">
+    {{category}}
+    </div>
+		</h1>		
+{% endblock %}
+
+{% block main %}
+<div id="pages">
+<ul>
+{% for page in pages %}
+<li>
+<a href="{{page.get_absolute_url}}">{{page.title}}</a>
+</li>
+{% endfor %}
+</ul>
+</div>
+
+<div id="paginate">
+{% if has_next %}
+<a href="./?page={{next_page}}">Next</a>
+{% endif %}
+{% if has_previous %}
+<a href="./?page={{prev_page}}">Prev</a>
+{% endif %}
+</div>
+{% endblock %}
+
+{% block contextnav %}
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'djikiki/base.html' %}
+
+{% block title%}
+{{wiki.name}} - {{page.title}}
+{% endblock %}
+
+{% block header %}
+		<h2><span><a href="{{page.get_edit_url}}">Edit this</a></span></h2>
+		<h1>
+		<div id="title">{{page.title}}
+    </div>
+		</h1>		
+{% endblock %}
+
+{% block contextnav %}
+<div id="controls">
+<ul class="control">
+<li>
+<a href="{{page.get_discuss_url}}">Dicussion</a>
+</li>
+<li>
+<a href="{{page.get_absolute_url}}">Article</a>
+</li>
+<li>
+<a href="{{page.get_edit_url}}">Edit</a>
+</li>
+<li>
+<a href="{{page.get_revision_url}}">Revisions</a>
+</li>
+</ul>
+</div>
+{% endblock %}
+
+{% block main %}
+
+
+<div id="text">
+{{page.current_revision.html_text|safe}}
+</div>
+
+<div id="categories">
+<ul>
+<h4>Categories</h4>
+{% for category in categories %}
+<li><a href="{{ category.get_absolute_url }}">{{ category.text }}</a></li>
+{% endfor %}
+</ul>
+</div>
+{% endblock %}

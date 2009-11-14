@@ -1,0 +1,46 @@
+{% extends 'djikiki/base.html' %}
+
+{% block title%}
+{{wiki.name}} - Revisions: {{page.title}} 
+{% endblock %}
+
+{% block header %}
+		<h2><span><a href="{{page.get_absolute_url}}">Article</a> </span></h2>
+		<h1>
+		<div id="title">Revisions: {{page.title}}
+    </div>
+		</h1>		
+{% endblock %}
+
+{% block main %}
+<div id="title">
+Revisions for <a href="{{page.get_absolute_url}}">{{page.title}}</a>
+</div>
+<div id="revisions">
+<ul>
+{% for revision in revisions %}
+<li>
+<a href="{{revision.get_absolute_url}}">{{revision.edit_summary}}</a> <br />
+{{revision.html_text|safe|truncatewords_html:30}}
+</li>
+{% endfor %}
+</ul>
+{% include 'djikiki/paginate.html' %}
+</div>
+{% endblock %}
+
+{% block contextnav %}
+<div id="controls">
+<ul class="control">
+<li>
+<a href="{{page.get_discuss_url}}">Dicussion</a>
+</li>
+<li>
+<a href="{{page.get_absolute_url}}">Article</a>
+</li>
+<li>
+<a href="/create/">New</a>
+</li>
+</ul>
+</div>
+{% endblock %}

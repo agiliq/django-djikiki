@@ -1,0 +1,24 @@
+{% extends 'djikiki/base.html' %}
+
+{% block title%}
+{{wiki.name}} - Users List
+{% endblock %}
+
+{% block header %}
+		<h2><span></span></h2>
+		<h1>
+		<div id="title">Users List
+    </div>
+		</h1>	
+{% endblock %}
+
+{% block main %}
+<ul>
+{% for user_x in user_list %}
+<li><a href="/user-edit/{{user_x.username}}/">{{user_x.username}}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}
+
+{% block contextnav %}
+{% endblock %}

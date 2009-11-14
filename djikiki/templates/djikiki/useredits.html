@@ -1,0 +1,44 @@
+{% extends 'djikiki/base.html' %}
+
+{% block title%}
+{{wiki.name}} - Profile: {{user_for.username}}
+{% endblock %}
+
+{% block header %}
+		<h2><span></span></h2>
+		<h1>
+		<div id="title">Profile: {{user_for.username}}
+    </div>
+		</h1>	
+{% endblock %}
+
+{% block main %}
+<ul>
+{{user_for.username}}'s Edits
+{% for edit in user_edits %}
+<li>
+<a href="{{edit.get_absolute_url}}">{{edit.revision_for.title}}</a>
+</li>
+{% endfor %}
+</ul>
+
+<ul>
+{{user_for.username}}'s Created Pages
+{% for create in user_create %}
+<li>
+<a href="{{create.get_absolute_url}}">{{create.title}}</a>
+</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
+
+{% block contextnav %}
+<ul>
+{% for featured in recently_featured %}
+<li>
+<a href="{{featured.page.get_absolute_url}}">{{featured.page.title}}</a>
+</li>
+{% endfor %}
+</ul>
+{% endblock %}

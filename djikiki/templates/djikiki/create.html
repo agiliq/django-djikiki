@@ -1,0 +1,26 @@
+{% extends 'djikiki/base.html' %}
+
+{% block title%}
+{{wiki.name}} - Create
+{% endblock %}
+
+{% block header %}
+		<h2><span> </span></h2>
+		<h1>
+		<div id="title">Create a new page
+    </div>
+		</h1>		
+{% endblock %}
+
+{% block main %}
+<form action="." method="post">
+<table>
+{{ form }}
+</table>
+<input type="submit" name="submit" value="create">
+
+</form>
+{% endblock %}
+
+{% block contextnav %}
+{% endblock %}

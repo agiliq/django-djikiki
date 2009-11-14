@@ -1,0 +1,27 @@
+{% extends 'djikiki/base.html' %}
+
+{% block title%}
+{{wiki.name}} - Edit - {{page.title}} 
+{% endblock %}
+
+{% block header %}
+		<h2><span><a href="{{page.get_absolute_url}}">Article</a></span></h2>
+		<h1>
+		<div id="title">{{page.title}}
+    </div>
+		</h1>		
+{% endblock %}
+
+{% block main %}
+<form action="." method="post">
+<table>
+{{ form }}
+</table>
+<input type="submit" name="submit" value="edit">
+</form>
+{% endblock %}
+
+{% block contextnav %}
+<div id="controls">
+</div>
+{% endblock %}

@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
+<meta name="description" content="description"/>
+<meta name="keywords" content="keywords"/> 
+<meta name="author" content="author"/> 
+<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}djikiki/default.css" media="screen"/>
+<title>
+{% block title %}
+Djikiki
+{% endblock %}
+</title>
+</head>
+
+<body>
+
+<div class="left">
+	
+	<div class="header">
+	  {% block header %}
+		<h2><span></span></h2>
+		<h1></h1>		
+		{% endblock %}
+
+	</div>
+
+	<div class="content">
+	{% block main %}
+  	<h1>Page header here</h1>
+		<div class="descr">Description here</div>
+
+		<p>Some text</p>
+	{% endblock %}
+	</div>
+
+
+</div>
+
+<div class="nav">
+	{% block logo %}
+  <div class="logo"><span></span></div>
+	{% endblock %}
+	
+	{% block contextnav %}
+	<ul>
+		<li><a href="/"></a></li>
+	</ul>	
+  {% endblock %}
+
+</div>
+
+<div class="right">
+
+	<div class="round">		
+		<div class="roundtl"><span></span></div>
+		<div class="roundtr"><span></span></div>
+		<div class="clearer"><span></span></div>
+	</div>
+
+	<div class="subnav">
+   {% block sidebar %}
+	 <div id="salute">Hello {{user.username}}</div>
+	 <h1>Meta</h1>
+   <ul>
+   <li>
+   <a href="{% url djikiki_index %}">Main</a>
+   </li>
+   <li>
+   <a href="{% url djikiki_create %}">New</a>
+   </li>
+	 {% if user.is_authenticated %}
+   <li>
+   <a href="{% url auth_logout %}">Logout</a>
+   </li>	  
+   <li>
+   <a href="{% url djikiki_profile %}">Your Profile</a>
+   </li>		 
+	 {% else %}
+   <li>
+   <a href="{% url auth_login %}">Login</a>
+   </li>	
+   <li>
+   <a href="{% url registration_register %}">Register</a>
+   </li>	 	  
+	 {% endif %}		 
+   </ul> 	 
+	 
+	 <h1>New Pages</h1>
+   <ul>
+	 {% for r_page in recent_pages %}
+   <li>
+   <a href="{{r_page.get_absolute_url}}">{{r_page.title}}</a>
+   </li>
+	 {% endfor %}	 
+   </ul>	
+	 
+	 <h1>Changed Pages</h1>
+   <ul>
+	 {% for r_page in recent_changes %}
+   <li>
+   <a href="{{ r_page.get_absolute_url }}">{{r_page.title}}</a>
+   </li>
+	 {% endfor %}	 
+   </ul>	 
+	 
+	 {%if user.is_staff %}
+	 <h1>Admin</h1>
+   <ul>
+   <li>
+   <a href="{% url djikiki_create_featured %}">New Featured Page</a>
+   </li>	 
+   <li>
+   <a href="{% url djikiki_userlist %}">Users List</a>
+   </li>	 	  
+   </ul>	 	  
+	 {% endif %}		 
+	 
+  {% endblock %}
+	</div>
+
+	<div class="round">
+		<div class="roundbl"><span></span></div>
+		<div class="roundbr"><span></span></div>
+		<span class="clearer"></span>
+	</div>
+
+</div>
+
+<div class="footer">
+{% block footer %}
+<a href="http://code.google.com/p/djikiki/">The Django wiki</a>
+| <a href="/">{{wiki.name}} - {{wiki.tagline}}</a>
+| <a href="http://www.42topics.com/">42topics</a>
+| <a href="http://www.uswaretech.com/">Uswaretech</a>
+
+{% endblock %}
+</div>
+
+</body>
+
+</html>

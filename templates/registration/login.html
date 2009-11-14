@@ -1,0 +1,23 @@
+{% extends 'registration/base.html'  %}
+
+{% block title %}
+{{wiki.title}} - Login
+{% endblock %}
+
+{% block header%}
+		<h2><span></span></h2>
+		<h1>
+		<div id="title">Login
+    </div>
+		</h1>		
+{% endblock %}
+
+{% block main %}
+<form action="." method="post">
+<table>
+{{ form }}
+</table>
+<input type="submit" value="submit" />
+</form>
+{% endblock %}
+
