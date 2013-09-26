@@ -66,24 +66,24 @@ Djikiki
 	 <h1>Meta</h1>
    <ul>
    <li>
-   <a href="{% url djikiki_index %}">Main</a>
+   <a href="{% url 'djikiki_index' %}">Main</a>
    </li>
    <li>
-   <a href="{% url djikiki_create %}">New</a>
+   <a href="{% url 'djikiki_create' %}">New</a>
    </li>
 	 {% if user.is_authenticated %}
    <li>
-   <a href="{% url auth_logout %}">Logout</a>
+   <a href="{% url 'auth_logout' %}">Logout</a>
    </li>	  
    <li>
-   <a href="{% url djikiki_profile %}">Your Profile</a>
+   <a href="{% url 'djikiki_profile' %}">Your Profile</a>
    </li>		 
 	 {% else %}
    <li>
-   <a href="{% url auth_login %}">Login</a>
+   <a href="{% url 'auth_login' %}">Login</a>
    </li>	
    <li>
-   <a href="{% url registration_register %}">Register</a>
+   <a href="{% url 'registration_register' %}">Register</a>
    </li>	 	  
 	 {% endif %}		 
    </ul> 	 
@@ -110,10 +110,10 @@ Djikiki
 	 <h1>Admin</h1>
    <ul>
    <li>
-   <a href="{% url djikiki_create_featured %}">New Featured Page</a>
+   <a href="{% url 'djikiki_create_featured' %}">New Featured Page</a>
    </li>	 
    <li>
-   <a href="{% url djikiki_userlist %}">Users List</a>
+   <a href="{% url 'djikiki_userlist' %}">Users List</a>
    </li>	 	  
    </ul>	 	  
 	 {% endif %}		 
