@@ -43,3 +43,20 @@ class DjikikiAppTestcase(TestCase):
     	self.c.login(username="admin", password="admin")
     	self.assertEqual(302, response.status_code)    
 
+    def test_create_featured(self):
+        response = self.c.get(reverse("djikiki_create_featured"))
+        self.assertEqual(302, response.status_code)
+        self.c.login(username="admin", password="admin")
+        self.assertEqual(302, response.status_code)    
+
+    def test_user_list(self):
+        response = self.c.get(reverse("djikiki_userlist"))
+        self.assertEqual(302, response.status_code)
+        self.c.login(username="admin", password="admin")
+        self.assertEqual(302, response.status_code)   
+
+    def test_djikiki_profile(self):
+        response = self.c.get(reverse("djikiki_profile"))
+        self.assertEqual(302, response.status_code)
+        self.c.login(username="admin", password="admin")
+        self.assertEqual(302, response.status_code)            
